@@ -9,16 +9,9 @@ require.config( {
 	baseUrl: "https://qlikdevel.ajanta.com/sess/resources"
 } );
 
-require( ["js/qlik"], function ( qlik ) {
-	qlik.on( "error", function ( error ) {
-		$( '#popupText' ).append( error.message + "<br>" );
-		$( '#popup' ).fadeIn( 1000 );
-	} );
-	$( "#closePopup" ).click( function () {
-		$( '#popup' ).hide();
-	} );
-
-    console.log('123')
-
-
-} );
+require(["js/qlik"], function(qlik) {
+	// open the app
+	var app = qlik.openApp('8ff53ca5-172d-4200-8fb6-8b7def1c0038', config);
+	// insert Qlik objects into the page.
+	app.getObject(document.getElementById('QV01'), 'AcjpS');
+});
